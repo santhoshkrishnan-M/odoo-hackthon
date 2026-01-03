@@ -1,3 +1,0 @@
-"""
-Itinerary module initialization.
-"""

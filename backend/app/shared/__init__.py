@@ -1,3 +1,0 @@
-"""
-Shared module initialization.
-"""

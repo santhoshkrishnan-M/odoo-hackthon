@@ -1,3 +1,0 @@
-"""
-Trips module initialization.
-"""
