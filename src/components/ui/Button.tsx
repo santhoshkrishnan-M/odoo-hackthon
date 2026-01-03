@@ -1,135 +1,75 @@
-/**
- * BUTTON COMPONENT
- * Premium animated button with smooth hover effects
- */
-
 'use client';
 
-import { ButtonHTMLAttributes, ReactNode, useRef, useEffect } from 'react';
-import { cn } from '@/lib/utils';
+import { ButtonHTMLAttributes, forwardRef, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
   size?: 'sm' | 'md' | 'lg';
 }
 
-export default function Button({
-  children,
-  variant = 'primary',
-  size = 'md',
-  className,
-  ...props
-}: ButtonProps) {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const glowRef = useRef<HTMLDivElement>(null);
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ children, variant = 'primary', size = 'md', className = '', ...props }, ref) => {
+    const internalRef = useRef<HTMLButtonElement>(null);
+    const buttonRef = (ref as any) || internalRef;
 
-  useEffect(() => {
-    const button = buttonRef.current;
-    const glow = glowRef.current;
-    if (!button) return;
-
-    // Smooth hover animation
-    const handleMouseEnter = () => {
-      gsap.to(button, {
-        scale: 1.02,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-      
-      if (glow) {
-        gsap.to(glow, {
-          opacity: 1,
-          scale: 1.2,
-          duration: 0.3,
-          ease: 'power2.out',
-        });
-      }
+    const baseStyles = 'rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 whitespace-nowrap';
+    
+    const variants = {
+      primary: 'bg-[var(--accent-primary)] hover:bg-[var(--accent-glow)] text-black font-semibold shadow-[var(--glow-neon)]',
+      secondary: 'bg-[var(--bg-elevated)] hover:bg-[var(--bg-hover)] text-white border border-[var(--glass-border)]',
+      ghost: 'bg-transparent hover:bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]',
+      outline: 'bg-transparent hover:bg-[var(--bg-elevated)] text-[var(--text-primary)] border-2 border-[var(--glass-border)] hover:border-[var(--accent-primary)]/30',
     };
 
-    const handleMouseLeave = () => {
-      gsap.to(button, {
-        scale: 1,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-      
-      if (glow) {
-        gsap.to(glow, {
-          opacity: 0,
+    const sizes = {
+      sm: 'px-4 py-2 text-sm h-9',
+      md: 'px-5 py-2.5 text-sm h-10',
+      lg: 'px-6 py-3 text-base h-12',
+    };
+
+    useEffect(() => {
+      const button = buttonRef.current;
+      if (!button) return;
+
+      const handleMouseEnter = () => {
+        gsap.to(button, {
+          scale: 1.05,
+          duration: 0.2,
+          ease: 'power2.out',
+        });
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(button, {
           scale: 1,
-          duration: 0.3,
+          duration: 0.2,
           ease: 'power2.out',
         });
-      }
-    };
+      };
 
-    // Click animation
-    const handleMouseDown = () => {
-      gsap.to(button, {
-        scale: 0.98,
-        duration: 0.1,
-        ease: 'power2.in',
-      });
-    };
+      button.addEventListener('mouseenter', handleMouseEnter);
+      button.addEventListener('mouseleave', handleMouseLeave);
 
-    const handleMouseUp = () => {
-      gsap.to(button, {
-        scale: 1.02,
-        duration: 0.2,
-        ease: 'power2.out',
-      });
-    };
+      return () => {
+        button.removeEventListener('mouseenter', handleMouseEnter);
+        button.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }, []);
 
-    button.addEventListener('mouseenter', handleMouseEnter);
-    button.addEventListener('mouseleave', handleMouseLeave);
-    button.addEventListener('mousedown', handleMouseDown);
-    button.addEventListener('mouseup', handleMouseUp);
-
-    return () => {
-      button.removeEventListener('mouseenter', handleMouseEnter);
-      button.removeEventListener('mouseleave', handleMouseLeave);
-      button.removeEventListener('mousedown', handleMouseDown);
-      button.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, []);
-
-  const baseStyles = 'relative rounded-full font-medium transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden';
-  
-  const variantStyles = {
-    primary: 'bg-gradient-neon text-black',
-    secondary: 'bg-gradient-blue text-white',
-    outline: 'border-2 border-[var(--accent-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-black',
-    ghost: 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]',
-  };
-  
-  const sizeStyles = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg',
-  };
-
-  return (
-    <div className="relative inline-block">
-      {/* Glow effect */}
-      {(variant === 'primary' || variant === 'secondary') && (
-        <div
-          ref={glowRef}
-          className={`absolute inset-0 rounded-full opacity-0 blur-lg ${
-            variant === 'primary' ? 'bg-[var(--accent-primary)]' : 'bg-[var(--accent-blue)]'
-          }`}
-          style={{ zIndex: -1 }}
-        />
-      )}
-      
+    return (
       <button
         ref={buttonRef}
-        className={cn(baseStyles, variantStyles[variant], sizeStyles[size], className)}
+        className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
         {...props}
       >
         {children}
       </button>
-    </div>
-  );
-}
+    );
+  }
+);
+
+Button.displayName = 'Button';
+
+export default Button;
+

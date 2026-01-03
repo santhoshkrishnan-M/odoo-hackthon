@@ -54,7 +54,7 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center p-8 relative overflow-hidden">
       {/* Animated Background */}
       <AnimatedBackground />
 
@@ -66,9 +66,9 @@ export default function AuthPage() {
       >
         {/* Logo */}
         <div className="flex items-center justify-center gap-3 mb-8">
-          <Plane className="w-12 h-12 text-[var(--accent-primary)]" />
+          <Plane className="w-10 h-10 text-[var(--accent-primary)]" />
           <h1 className="text-3xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>
-            <span className="neon-text">Global</span>
+            <span className="neon-text">Globe</span>
             <span className="text-white"> Trotter</span>
           </h1>
         </div>
@@ -79,12 +79,12 @@ export default function AuthPage() {
         >
           Welcome Back
         </h2>
-        <p className="text-[var(--text-secondary)] mb-8 text-center">
+        <p className="text-base text-[var(--text-secondary)] mb-8 text-center">
           Sign in to continue your journey
         </p>
 
         {/* Login Form */}
-        <div className="space-y-4">
+        <div className="space-y-5">
           <Input
             type="email"
             label="Email"
@@ -103,7 +103,8 @@ export default function AuthPage() {
 
           <Button
             variant="primary"
-            className="w-full"
+            size="lg"
+            className="w-full mt-6"
             onClick={handleLogin}
           >
             Sign In
@@ -114,7 +115,7 @@ export default function AuthPage() {
               <div className="w-full border-t border-[var(--glass-border)]"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-[var(--bg-surface)] text-[var(--text-secondary)]">
+              <span className="px-3 bg-[var(--bg-surface)] text-[var(--text-secondary)]">
                 Or
               </span>
             </div>
@@ -122,6 +123,7 @@ export default function AuthPage() {
 
           <Button
             variant="secondary"
+            size="lg"
             className="w-full"
             onClick={handleDemoLogin}
           >
@@ -130,9 +132,9 @@ export default function AuthPage() {
         </div>
 
         {/* Sign Up Link */}
-        <p className="mt-8 text-center text-sm text-[var(--text-secondary)]">
+        <p className="mt-6 text-center text-sm text-[var(--text-secondary)]">
           Don't have an account?{' '}
-          <button className="text-[var(--accent-primary)] hover:underline">
+          <button className="text-[var(--accent-primary)] hover:underline font-medium">
             Sign up
           </button>
         </p>

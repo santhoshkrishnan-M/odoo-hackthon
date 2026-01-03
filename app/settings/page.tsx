@@ -31,16 +31,21 @@ export default function SettingsPage() {
 
   return (
     <MainLayout>
-      <div className="p-8 max-w-4xl mx-auto">
-        <h1 className="section-title mb-8">Settings</h1>
+      <div className="max-w-3xl space-y-8">
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold mb-2">Settings</h1>
+          <p className="text-base text-[var(--text-secondary)]">
+            Manage your account preferences
+          </p>
+        </div>
 
         {/* Profile Settings */}
-        <Card className="p-6 mb-6">
-          <div className="flex items-center gap-3 mb-6">
-            <User className="w-6 h-6 text-[var(--accent-primary)]" />
-            <h2 className="text-xl font-bold">Profile Information</h2>
+        <Card className="p-6">
+          <div className="flex items-center gap-3 mb-5">
+            <User className="w-5 h-5 text-[var(--accent-primary)]" />
+            <h2 className="text-lg font-bold">Profile Information</h2>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-5">
             <Input
               label="Full Name"
               type="text"
@@ -53,44 +58,44 @@ export default function SettingsPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <Button variant="primary" onClick={handleSave}>
+            <Button variant="primary" size="md" onClick={handleSave}>
               Save Changes
             </Button>
           </div>
         </Card>
 
         {/* Appearance */}
-        <Card className="p-6 mb-6">
-          <div className="flex items-center gap-3 mb-6">
+        <Card className="p-6">
+          <div className="flex items-center gap-3 mb-5">
             {theme === 'dark' ? (
-              <Moon className="w-6 h-6 text-[var(--accent-blue)]" />
+              <Moon className="w-5 h-5 text-[var(--accent-blue)]" />
             ) : (
-              <Sun className="w-6 h-6 text-[var(--accent-primary)]" />
+              <Sun className="w-5 h-5 text-[var(--accent-primary)]" />
             )}
-            <h2 className="text-xl font-bold">Appearance</h2>
+            <h2 className="text-lg font-bold">Appearance</h2>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-4">
             <div>
-              <p className="font-medium mb-1">Theme</p>
+              <p className="font-medium mb-1 text-sm">Theme</p>
               <p className="text-sm text-[var(--text-secondary)]">
                 Currently using {theme} mode
               </p>
             </div>
-            <Button variant="outline" onClick={toggleTheme}>
+            <Button variant="outline" size="md" onClick={toggleTheme}>
               Toggle Theme
             </Button>
           </div>
         </Card>
 
         {/* Language */}
-        <Card className="p-6 mb-6">
-          <div className="flex items-center gap-3 mb-6">
-            <Globe className="w-6 h-6 text-[var(--accent-blue)]" />
-            <h2 className="text-xl font-bold">Language & Region</h2>
+        <Card className="p-6">
+          <div className="flex items-center gap-3 mb-5">
+            <Globe className="w-5 h-5 text-[var(--accent-blue)]" />
+            <h2 className="text-lg font-bold">Language & Region</h2>
           </div>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm text-[var(--text-secondary)] mb-2">
+              <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
                 Language
               </label>
               <select
@@ -109,8 +114,8 @@ export default function SettingsPage() {
         </Card>
 
         {/* Saved Places */}
-        <Card className="p-6 mb-6">
-          <h2 className="text-xl font-bold mb-4">Saved Places</h2>
+        <Card className="p-6">
+          <h2 className="text-lg font-bold mb-4">Saved Places</h2>
           <div className="space-y-3">
             {['Tokyo, Japan', 'Paris, France', 'Bali, Indonesia'].map((place) => (
               <div
@@ -128,15 +133,16 @@ export default function SettingsPage() {
 
         {/* Danger Zone */}
         <Card className="p-6 border-2 border-red-500/30">
-          <div className="flex items-center gap-3 mb-4">
-            <Trash2 className="w-6 h-6 text-red-400" />
-            <h2 className="text-xl font-bold text-red-400">Danger Zone</h2>
+          <div className="flex items-center gap-3 mb-3">
+            <Trash2 className="w-5 h-5 text-red-400" />
+            <h2 className="text-lg font-bold text-red-400">Danger Zone</h2>
           </div>
           <p className="text-sm text-[var(--text-secondary)] mb-4">
             Once you delete your account, there is no going back. Please be certain.
           </p>
           <Button
             variant="outline"
+            size="md"
             className="border-red-500 text-red-400 hover:bg-red-500/10"
             onClick={handleDeleteAccount}
           >

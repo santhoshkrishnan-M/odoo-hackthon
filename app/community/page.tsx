@@ -26,23 +26,23 @@ export default function CommunityPage() {
 
   return (
     <MainLayout>
-      <div className="p-8">
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-3">
-            <Users className="w-8 h-8 text-[var(--accent-primary)]" />
-            <h1 className="section-title mb-0">Community Trips</h1>
+      <div className="space-y-12">
+        <div>
+          <div className="flex items-center gap-4 mb-4">
+            <Users className="w-8 h-8 md:w-10 md:h-10 text-[var(--accent-primary)]" />
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-0">Community Trips</h1>
           </div>
-          <p className="text-[var(--text-secondary)]">
+          <p className="text-base md:text-lg text-[var(--text-secondary)]">
             Discover and get inspired by trips shared by other travelers
           </p>
         </div>
 
         {/* Featured Banner */}
-        <Card className="mb-8 bg-gradient-to-br from-[var(--accent-blue)]/20 to-[var(--accent-primary)]/10 border-2 border-[var(--accent-blue)]">
+        <Card className="p-6 md:p-8 bg-gradient-to-br from-[var(--accent-blue)]/20 to-[var(--accent-primary)]/10 border-2 border-[var(--accent-blue)]">
           <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-2xl font-bold mb-2">🌟 Featured Trip of the Week</h2>
-              <p className="text-[var(--text-secondary)]">
+            <div className="space-y-2">
+              <h2 className="text-xl md:text-2xl font-bold mb-0">🌟 Featured Trip of the Week</h2>
+              <p className="text-sm md:text-base text-[var(--text-secondary)]">
                 Explore the most popular trip shared by our community
               </p>
             </div>
@@ -54,13 +54,13 @@ export default function CommunityPage() {
           {mockCommunityTrips.map((trip) => {
             const days = calculateTripDays(trip.startDate, trip.endDate);
             return (
-              <Card key={trip.id} className="group">
+              <Card key={trip.id} className="group p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-[var(--accent-primary)] transition-colors">
+                    <h3 className="text-lg font-bold mb-2 group-hover:text-[var(--accent-primary)] transition-colors">
                       {trip.name}
                     </h3>
-                    <p className="text-sm text-[var(--text-secondary)] line-clamp-2">
+                    <p className="text-sm text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
                       {trip.description}
                     </p>
                   </div>
@@ -69,11 +69,11 @@ export default function CommunityPage() {
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center gap-2 text-sm">
                     <MapPin className="w-4 h-4 text-[var(--accent-primary)]" />
-                    <span>{trip.cities.map((c) => c.name).join(', ')}</span>
+                    <span className="line-clamp-1">{trip.cities.map((c) => c.name).join(', ')}</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Calendar className="w-4 h-4 text-[var(--accent-blue)]" />
-                    <span>
+                    <span className="text-xs md:text-sm">
                       {formatDate(trip.startDate)} - {formatDate(trip.endDate)} ({days} days)
                     </span>
                   </div>
@@ -84,7 +84,7 @@ export default function CommunityPage() {
                 </div>
 
                 {/* Stats */}
-                <div className="flex gap-4 mb-4 pb-4 border-b border-[var(--glass-border)] text-sm">
+                <div className="flex gap-4 mb-4 pb-4 border-b border-[var(--glass-border)] text-xs md:text-sm">
                   <div>
                     <span className="text-[var(--text-secondary)]">Views: </span>
                     <span className="font-semibold">1.2k</span>
@@ -102,16 +102,16 @@ export default function CommunityPage() {
                 <div className="flex gap-2">
                   <Button
                     variant="primary"
-                    size="sm"
+                    size="md"
                     className="flex-1"
                     onClick={() => handleViewTrip(trip.id)}
                   >
                     <Eye className="w-4 h-4" />
-                    View Trip
+                    View
                   </Button>
                   <Button
                     variant="outline"
-                    size="sm"
+                    size="md"
                     className="flex-1"
                     onClick={(e) => handleCopyTrip(e, trip.name)}
                   >
@@ -125,10 +125,10 @@ export default function CommunityPage() {
         </div>
 
         {/* Empty State for More Content */}
-        <Card className="mt-8 text-center py-12">
-          <Users className="w-16 h-16 mx-auto mb-4 text-[var(--accent-blue)]" />
-          <h3 className="text-xl font-bold mb-2">More trips coming soon!</h3>
-          <p className="text-[var(--text-secondary)] mb-4">
+        <Card className="mt-8 text-center py-10 px-6">
+          <Users className="w-12 h-12 md:w-14 md:h-14 mx-auto mb-4 text-[var(--accent-blue)]" />
+          <h3 className="text-lg md:text-xl font-bold mb-2">More trips coming soon!</h3>
+          <p className="text-sm md:text-base text-[var(--text-secondary)] mb-4">
             Be the first to share your amazing trip with the community
           </p>
           <Button variant="primary" onClick={() => router.push('/trips/new')}>

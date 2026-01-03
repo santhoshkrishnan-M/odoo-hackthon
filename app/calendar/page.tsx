@@ -55,27 +55,30 @@ export default function CalendarPage() {
 
   return (
     <MainLayout>
-      <div className="p-8">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="section-title mb-0">Trip Calendar</h1>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm" onClick={previousMonth}>
+      <div className="space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold mb-1">Trip Calendar</h1>
+            <p className="text-sm text-[var(--text-secondary)]">View your trips on the calendar</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="md" onClick={previousMonth}>
               <ChevronLeft className="w-5 h-5" />
             </Button>
-            <h2 className="text-2xl font-bold min-w-[200px] text-center">
+            <h2 className="text-xl font-bold min-w-[180px] text-center">
               {monthNames[month]} {year}
             </h2>
-            <Button variant="ghost" size="sm" onClick={nextMonth}>
+            <Button variant="ghost" size="md" onClick={nextMonth}>
               <ChevronRight className="w-5 h-5" />
             </Button>
           </div>
         </div>
 
-        <Card className="p-6">
+        <Card className="p-4 md:p-6">
           {/* Weekday Headers */}
-          <div className="grid grid-cols-7 gap-4 mb-4">
+          <div className="grid grid-cols-7 gap-2 md:gap-4 mb-3">
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-              <div key={day} className="text-center font-semibold text-[var(--text-secondary)]">
+              <div key={day} className="text-center font-semibold text-sm text-[var(--text-secondary)]">
                 {day}
               </div>
             ))}
