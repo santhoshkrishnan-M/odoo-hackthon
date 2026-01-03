@@ -1,0 +1,3 @@
+"""
+Budget module initialization.
+"""
