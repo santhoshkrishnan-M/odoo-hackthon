@@ -1,13 +1,13 @@
-<<<<<<< HEAD
-# 🌍 Globe Trotter - Premium Trip Planning Platform
+HEAD
+#  Globe Trotter - Premium Trip Planning Platform
 
 A **desktop-first, futuristic trip planning web application** built with Next.js, featuring stunning GSAP animations, smooth Lenis scrolling, and a glassmorphism design system.
 
 ---
 
-## ✨ Features
+##  Features
 
-### 🎨 Design
+###  Design
 - **Dark-mode first** with premium glassmorphism UI
 - **Neon green accents** (#C7F000) with soft blue/purple gradients
 - **GSAP-powered animations** throughout the app
@@ -15,7 +15,7 @@ A **desktop-first, futuristic trip planning web application** built with Next.js
 - **3D card hover effects** with mouse tracking
 - **Responsive design** (desktop-first, mobile-friendly)
 
-### 📱 13 Complete Pages
+###  13 Complete Pages
 
 1. **Auth Page** (`/auth`) - Login & signup with demo login
 2. **Dashboard** (`/dashboard`) - Hero section with active trip & quick actions
@@ -31,22 +31,22 @@ A **desktop-first, futuristic trip planning web application** built with Next.js
 12. **Settings** (`/settings`) - Profile, theme toggle, preferences
 13. **Community** (`/community`) - Browse trips shared by others
 
-### 🚀 Features
+###  Features
 
-- ✅ **All buttons work** - No dead UI
-- ✅ **Mock data everywhere** - No backend required
-- ✅ **State management** with Zustand
-- ✅ **Smooth page transitions** with GSAP
-- ✅ **Glassmorphism cards** with hover animations
-- ✅ **Working search** and filters
-- ✅ **Budget tracking** with animated progress bars
-- ✅ **Calendar integration** showing trip dates
-- ✅ **Trip sharing** functionality
-- ✅ **Theme toggle** (dark/light mode)
+- **All buttons work** - No dead UI
+- **Mock data everywhere** - No backend required
+- **State management** with Zustand
+- **Smooth page transitions** with GSAP
+- **Glassmorphism cards** with hover animations
+- **Working search** and filters
+- **Budget tracking** with animated progress bars
+- **Calendar integration** showing trip dates
+- **Trip sharing** functionality
+- **Theme toggle** (dark/light mode)
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Framework**: Next.js 16.1.1 (App Router)
 - **Language**: TypeScript
@@ -59,7 +59,7 @@ A **desktop-first, futuristic trip planning web application** built with Next.js
 
 ---
 
-## 📦 Installation & Running
+##  Installation & Running
 
 ```bash
 # Install dependencies
@@ -74,7 +74,7 @@ http://localhost:3000
 
 ---
 
-## 🎯 Quick Start Guide
+##  Quick Start Guide
 
 ### First Time Setup
 
@@ -107,7 +107,7 @@ http://localhost:3000
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 globe-trotter/
@@ -139,7 +139,7 @@ globe-trotter/
 
 ---
 
-## 🎨 Design System
+##  Design System
 
 ### Color Tokens
 
@@ -163,7 +163,7 @@ globe-trotter/
 
 ---
 
-## 🎬 Animations
+##  Animations
 
 ### GSAP Animations
 
@@ -181,7 +181,7 @@ globe-trotter/
 
 ---
 
-## 📝 Mock Data
+##  Mock Data
 
 All data is stored in `src/lib/mockData.ts`:
 
@@ -204,7 +204,7 @@ formatDate(dateString: string): string
 
 ---
 
-## 🔄 State Management
+##  State Management
 
 Using Zustand for global state:
 
@@ -224,7 +224,7 @@ searchQuery, setSearchQuery()
 
 ---
 
-## 💡 Tips for Beginners
+##  Tips for Beginners
 
 1. **Start with the Dashboard**: Explore the main features
 2. **Check mockData.ts**: See how data is structured
@@ -234,7 +234,7 @@ searchQuery, setSearchQuery()
 
 ---
 
-## 🚀 Deployment
+##  Deployment
 
 ```bash
 # Build for production
@@ -252,11 +252,11 @@ npm start
 
 ---
 
-## 🎉 Enjoy Planning Your Trips!
+## Enjoy Planning Your Trips!
 
 **Demo Login** → **Explore** → **Create** → **Share**
 
-Happy Travels! ✈️🌍
+Happy Travels! 
 =======
 
 >>>>>>> 9afa697ccfe7f00207697d1c973f55dd1d5cbdd0
