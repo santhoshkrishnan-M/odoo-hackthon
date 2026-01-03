@@ -1,0 +1,315 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,900&display=swap');
+
+/* ======================
+   GLOBAL TROTTER DESIGN SYSTEM
+   Premium Award-Winning Experience
+   ====================== */
+
+:root {
+  /* Background Colors */
+  --bg-primary: #121212;
+  --bg-surface: #1E1E1E;
+  --bg-elevated: #2A2A2A;
+  
+  /* Accent Colors */
+  --accent-primary: #C7F000;
+  --accent-glow: #D6FF4D;
+  --accent-blue: #6C7CFF;
+  --accent-blue-soft: #8B9CFF;
+  
+  /* Text Colors */
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #6B7280;
+  
+  /* Gradients */
+  --gradient-blue: linear-gradient(180deg, #6C7CFF 0%, #8B9CFF 100%);
+  --gradient-neon: linear-gradient(135deg, #C7F000 0%, #D6FF4D 100%);
+  --gradient-panel: linear-gradient(145deg, #1E1E1E, #242424);
+  --gradient-ambient: radial-gradient(circle at 50% 50%, rgba(199,240,0,0.08), transparent 60%);
+  --gradient-blue-wash: linear-gradient(180deg, rgba(108,124,255,0.12), transparent);
+  
+  /* Effects */
+  --glass-bg: rgba(30, 30, 30, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glow-neon: 0 0 20px rgba(199, 240, 0, 0.3);
+  --glow-blue: 0 0 20px rgba(108, 124, 255, 0.3);
+  
+  /* Premium Typography */
+  --font-display: 'Satoshi', var(--font-geist-sans), -apple-system, sans-serif;
+  --font-body: 'Inter', var(--font-geist-sans), -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono);
+  
+  /* Typography Scale */
+  --text-hero: clamp(3.5rem, 8vw, 7rem);
+  --text-display: clamp(2.5rem, 5vw, 4rem);
+  --text-h1: clamp(2rem, 4vw, 3rem);
+  --text-h2: clamp(1.5rem, 3vw, 2rem);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ======================
+   PREMIUM TYPOGRAPHY
+   ====================== */
+
+h1, h2, h3, h4, h5, h6,
+.heading, .display, .hero-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.hero-text {
+  font-size: var(--text-hero);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.display-text {
+  font-size: var(--text-display);
+  font-weight: 700;
+}
+
+h1, .h1 {
+  font-size: var(--text-h1);
+}
+
+h2, .h2 {
+  font-size: var(--text-h2);
+}
+
+p, .body-text {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ======================
+   GLASSMORPHISM UTILITIES
+   ====================== */
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: var(--glow-neon);
+  transform: translateY(-4px);
+}
+
+/* ======================
+   GRADIENT BACKGROUNDS
+   ====================== */
+
+.gradient-blue {
+  background: var(--gradient-blue);
+}
+
+.gradient-neon {
+  background: var(--gradient-neon);
+}
+
+/* ======================
+   ANIMATIONS
+   ====================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(199, 240, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(199, 240, 0, 0.6);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+/* ======================
+   SCROLLBAR STYLING
+   ====================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue-soft);
+}
+
+/* ======================
+   UTILITY CLASSES
+   ====================== */
+
+.neon-text {
+  color: var(--accent-primary);
+  text-shadow: 0 0 10px rgba(199, 240, 0, 0.5);
+}
+
+.page-container {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  background: var(--gradient-neon);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ======================
+   CINEMATIC EFFECTS
+   ====================== */
+
+.magnetic-hover {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.ambient-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.ambient-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: var(--gradient-ambient);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.ambient-glow:hover::before {
+  opacity: 1;
+}
+
+/* Parallax effect utility */
+.parallax-layer {
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+}
+
+/* ======================
+   RESPONSIVE
+   ====================== */
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  :root {
+    --text-hero: 2.5rem;
+    --text-display: 2rem;
+  }
+}
