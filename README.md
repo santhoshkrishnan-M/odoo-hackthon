@@ -1,4 +1,4 @@
-HEAD
+
 #  Globe Trotter - Premium Trip Planning Platform
 
 A **desktop-first, futuristic trip planning web application** built with Next.js, featuring stunning GSAP animations, smooth Lenis scrolling, and a glassmorphism design system.
@@ -257,6 +257,4 @@ npm start
 **Demo Login** → **Explore** → **Create** → **Share**
 
 Happy Travels! 
-=======
 
->>>>>>> 9afa697ccfe7f00207697d1c973f55dd1d5cbdd0
