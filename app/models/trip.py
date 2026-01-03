@@ -23,3 +23,13 @@ class Trip(Base):
     itinerary_days = relationship("ItineraryDay", back_populates="trip", cascade="all, delete-orphan")
     budget = relationship("Budget", back_populates="trip", uselist=False, cascade="all, delete-orphan")
     shared_trips = relationship("SharedTrip", back_populates="trip", cascade="all, delete-orphan")
+    
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.duration_days = 0
+        self.total_budget = 0.0
+        self.total_spent = 0.0
+        self.remaining_budget = 0.0
+        self.itinerary_days_count = 0
+        self.cities_count = 0
+        self.activities_count = 0

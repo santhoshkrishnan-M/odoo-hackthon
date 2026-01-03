@@ -22,3 +22,13 @@ class Budget(Base):
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
     
     trip = relationship("Trip", back_populates="budget")
+    
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.spent_accommodation = 0.0
+        self.spent_transportation = 0.0
+        self.spent_food = 0.0
+        self.spent_activities = 0.0
+        self.spent_shopping = 0.0
+        self.spent_other = 0.0
+        self.total_spent = 0.0

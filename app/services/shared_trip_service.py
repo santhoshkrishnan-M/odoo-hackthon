@@ -4,6 +4,8 @@ from datetime import datetime
 import secrets
 from app.repositories.shared_trip_repository import SharedTripRepository
 from app.repositories.trip_repository import TripRepository
+from app.repositories.budget_repository import BudgetRepository
+from app.repositories.itinerary_repository import ItineraryRepository
 from app.schemas.shared_trip import SharedTripCreate
 from app.models.shared_trip import SharedTrip
 from app.models.trip import Trip
@@ -13,6 +15,9 @@ class SharedTripService:
     def __init__(self, db: AsyncSession):
         self.repository = SharedTripRepository(db)
         self.trip_repository = TripRepository(db)
+        self.budget_repository = BudgetRepository(db)
+        self.itinerary_repository = ItineraryRepository(db)
+        self.db = db
     
     def generate_share_token(self) -> str:
         return secrets.token_urlsafe(32)
@@ -40,7 +45,14 @@ class SharedTripService:
             return None
         
         trip = await self.trip_repository.get_by_id(shared_trip.trip_id)
-        return (shared_trip, trip) if trip else None
+        if not trip:
+            return None
+        
+        from app.services.trip_service import TripService
+        trip_service = TripService(self.db)
+        await trip_service._enrich_trip_with_computed_data(trip)
+        
+        return (shared_trip, trip)
     
     async def revoke_shared_trip(self, shared_trip_id: str, user_id: str) -> bool:
         shared_trip = await self.repository.get_by_id(shared_trip_id)
