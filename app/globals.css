@@ -1,17 +1,29 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,900&display=swap');
 
 /* ======================
-   GLOBAL TROTTER DESIGN SYSTEM
+   GLOBE TROTTER DESIGN SYSTEM
    Premium Award-Winning Experience
    ====================== */
 
 :root {
-  /* Background Colors */
-  --bg-primary: #121212;
-  --bg-surface: #1E1E1E;
-  --bg-elevated: #2A2A2A;
+  /* ========== SPACING SYSTEM ========== */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  
+  /* Container widths */
+  --container-max: 1400px;
+  --container-padding: var(--space-lg);
+  
+  /* Background Colors - DARK MODE */
+  --bg-primary: #0F0F0F;
+  --bg-surface: #1A1A1A;
+  --bg-elevated: #252525;
+  --bg-hover: #2F2F2F;
   
   /* Accent Colors */
   --accent-primary: #C7F000;
@@ -22,20 +34,23 @@
   /* Text Colors */
   --text-primary: #FFFFFF;
   --text-secondary: #A1A1AA;
-  --text-muted: #6B7280;
+  --text-muted: #71717A;
   
   /* Gradients */
   --gradient-blue: linear-gradient(180deg, #6C7CFF 0%, #8B9CFF 100%);
   --gradient-neon: linear-gradient(135deg, #C7F000 0%, #D6FF4D 100%);
-  --gradient-panel: linear-gradient(145deg, #1E1E1E, #242424);
-  --gradient-ambient: radial-gradient(circle at 50% 50%, rgba(199,240,0,0.08), transparent 60%);
-  --gradient-blue-wash: linear-gradient(180deg, rgba(108,124,255,0.12), transparent);
+  --gradient-panel: linear-gradient(145deg, #1A1A1A, #202020);
+  --gradient-ambient: radial-gradient(circle at 50% 50%, rgba(199,240,0,0.06), transparent 60%);
+  --gradient-blue-wash: linear-gradient(180deg, rgba(108,124,255,0.08), transparent);
   
   /* Effects */
-  --glass-bg: rgba(30, 30, 30, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glow-neon: 0 0 20px rgba(199, 240, 0, 0.3);
-  --glow-blue: 0 0 20px rgba(108, 124, 255, 0.3);
+  --glass-bg: rgba(26, 26, 26, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glow-neon: 0 0 24px rgba(199, 240, 0, 0.25);
+  --glow-blue: 0 0 24px rgba(108, 124, 255, 0.25);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
   
   /* Premium Typography */
   --font-display: 'Satoshi', var(--font-geist-sans), -apple-system, sans-serif;
@@ -43,10 +58,11 @@
   --font-mono: var(--font-geist-mono);
   
   /* Typography Scale */
-  --text-hero: clamp(3.5rem, 8vw, 7rem);
-  --text-display: clamp(2.5rem, 5vw, 4rem);
-  --text-h1: clamp(2rem, 4vw, 3rem);
+  --text-hero: clamp(3rem, 7vw, 6rem);
+  --text-display: clamp(2.25rem, 5vw, 3.5rem);
+  --text-h1: clamp(1.875rem, 4vw, 2.75rem);
   --text-h2: clamp(1.5rem, 3vw, 2rem);
+  --text-h3: clamp(1.25rem, 2.5vw, 1.5rem);
 }
 
 @theme inline {
@@ -73,6 +89,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   line-height: 1.6;
+  letter-spacing: 0.01em;
 }
 
 /* ======================
@@ -83,33 +100,48 @@ h1, h2, h3, h4, h5, h6,
 .heading, .display, .hero-text {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: var(--space-md);
 }
 
 .hero-text {
   font-size: var(--text-hero);
   font-weight: 900;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-lg);
 }
 
 .display-text {
   font-size: var(--text-display);
   font-weight: 700;
+  margin-bottom: var(--space-lg);
 }
 
 h1, .h1 {
   font-size: var(--text-h1);
+  margin-bottom: var(--space-lg);
 }
 
 h2, .h2 {
   font-size: var(--text-h2);
+  margin-bottom: var(--space-md);
+}
+
+h3, .h3 {
+  font-size: var(--text-h3);
+  margin-bottom: var(--space-sm);
 }
 
 p, .body-text {
   font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.7;
+  margin-bottom: var(--space-md);
+}
+
+p:last-child {
+  margin-bottom: 0;
 }
 
 .text-balance {
@@ -122,25 +154,31 @@ p, .body-text {
 
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
 }
 
 .glass-card {
   background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  transition: all 0.3s ease;
+  padding: var(--space-lg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  border-color: var(--accent-primary);
+  border-color: rgba(199, 240, 0, 0.3);
   box-shadow: var(--glow-neon);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
+}
+
+/* Card with no padding (for image cards) */
+.glass-card.p-0 {
+  padding: 0;
 }
 
 /* ======================
@@ -226,24 +264,42 @@ p, .body-text {
 
 .neon-text {
   color: var(--accent-primary);
-  text-shadow: 0 0 10px rgba(199, 240, 0, 0.5);
+  text-shadow: 0 0 10px rgba(199, 240, 0, 0.4);
 }
 
 .page-container {
   min-height: 100vh;
-  padding: 2rem;
+  padding: var(--space-2xl) var(--space-lg);
+  max-width: var(--container-max);
+  margin: 0 auto;
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: var(--text-h1);
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-xl);
   font-family: var(--font-display);
   letter-spacing: -0.02em;
   background: var(--gradient-neon);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.section-spacing {
+  margin-bottom: var(--space-2xl);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-lg);
+}
+
+.card-grid-sm {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-md);
 }
 
 /* ======================

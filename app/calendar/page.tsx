@@ -55,7 +55,7 @@ export default function CalendarPage() {
 
   return (
     <MainLayout>
-      <div className="p-8">
+      <div>
         <div className="flex items-center justify-between mb-8">
           <h1 className="section-title mb-0">Trip Calendar</h1>
           <div className="flex items-center gap-4">

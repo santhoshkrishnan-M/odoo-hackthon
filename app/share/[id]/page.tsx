@@ -10,7 +10,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import { getTripById, formatDate, formatCurrency, calculateTripDays } from '@/lib/mockData';
-import { MapPin, Calendar, Wallet, Copy, Share2 } from 'lucide-react';
+import { MapPin, Calendar, Wallet, Copy, Share2, Star } from 'lucide-react';
 
 export default function SharedItineraryPage() {
   const params = useParams();
@@ -133,7 +133,10 @@ export default function SharedItineraryPage() {
                                   <span className="text-[var(--text-secondary)]">
                                     {activity.duration}
                                   </span>
-                                  <span>⭐ {activity.rating}</span>
+                                  <span className="flex items-center gap-1">
+                                    <Star className="w-3 h-3 text-[var(--accent-primary)] fill-current" />
+                                    {activity.rating}
+                                  </span>
                                 </div>
                               </div>
                               <span className="font-semibold text-[var(--accent-primary)]">

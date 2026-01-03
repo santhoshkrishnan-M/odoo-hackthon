@@ -13,7 +13,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import { getTripById, formatDate, formatCurrency, calculateTripDays } from '@/lib/mockData';
-import { MapPin, Calendar, Wallet, Edit, Share2, Users, Clock } from 'lucide-react';
+import { MapPin, Calendar, Wallet, Edit, Share2, Users, Clock, Star } from 'lucide-react';
 
 export default function ItineraryViewPage() {
   const params = useParams();
@@ -160,8 +160,9 @@ export default function ItineraryViewPage() {
                                         <span className="text-[var(--text-secondary)]">
                                           {activity.duration}
                                         </span>
-                                        <span className="text-[var(--accent-blue)]">
-                                          ⭐ {activity.rating}
+                                        <span className="flex items-center gap-1 text-[var(--accent-blue)]">
+                                          <Star className="w-3 h-3 fill-current" />
+                                          {activity.rating}
                                         </span>
                                       </div>
                                     </div>

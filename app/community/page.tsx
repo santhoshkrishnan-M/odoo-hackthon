@@ -26,23 +26,23 @@ export default function CommunityPage() {
 
   return (
     <MainLayout>
-      <div className="p-8">
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-3">
-            <Users className="w-8 h-8 text-[var(--accent-primary)]" />
-            <h1 className="section-title mb-0">Community Trips</h1>
+      <div className="space-y-20">
+        <div>
+          <div className="flex items-center gap-5 mb-5">
+            <Users className="w-12 h-12 text-[var(--accent-primary)]" />
+            <h1 className="text-6xl font-bold mb-0">Community Trips</h1>
           </div>
-          <p className="text-[var(--text-secondary)]">
+          <p className="text-xl text-[var(--text-secondary)]">
             Discover and get inspired by trips shared by other travelers
           </p>
         </div>
 
         {/* Featured Banner */}
-        <Card className="mb-8 bg-gradient-to-br from-[var(--accent-blue)]/20 to-[var(--accent-primary)]/10 border-2 border-[var(--accent-blue)]">
+        <Card className="p-10 bg-gradient-to-br from-[var(--accent-blue)]/20 to-[var(--accent-primary)]/10 border-2 border-[var(--accent-blue)]">
           <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-2xl font-bold mb-2">🌟 Featured Trip of the Week</h2>
-              <p className="text-[var(--text-secondary)]">
+            <div className="space-y-3">
+              <h2 className="text-3xl font-bold mb-0">🌟 Featured Trip of the Week</h2>
+              <p className="text-base text-[var(--text-secondary)]">
                 Explore the most popular trip shared by our community
               </p>
             </div>
@@ -50,41 +50,41 @@ export default function CommunityPage() {
         </Card>
 
         {/* Community Trips Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {mockCommunityTrips.map((trip) => {
             const days = calculateTripDays(trip.startDate, trip.endDate);
             return (
-              <Card key={trip.id} className="group">
-                <div className="flex items-start justify-between mb-4">
+              <Card key={trip.id} className="group p-10">
+                <div className="flex items-start justify-between mb-5">
                   <div>
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-[var(--accent-primary)] transition-colors">
+                    <h3 className="text-2xl font-bold mb-3 group-hover:text-[var(--accent-primary)] transition-colors">
                       {trip.name}
                     </h3>
-                    <p className="text-sm text-[var(--text-secondary)] line-clamp-2">
+                    <p className="text-base text-[var(--text-secondary)] line-clamp-2 leading-relaxed">
                       {trip.description}
                     </p>
                   </div>
                 </div>
 
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-sm">
+                <div className="space-y-3 mb-5">
+                  <div className="flex items-center gap-3 text-sm">
                     <MapPin className="w-4 h-4 text-[var(--accent-primary)]" />
                     <span>{trip.cities.map((c) => c.name).join(', ')}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-center gap-3 text-sm">
                     <Calendar className="w-4 h-4 text-[var(--accent-blue)]" />
                     <span>
                       {formatDate(trip.startDate)} - {formatDate(trip.endDate)} ({days} days)
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-center gap-3 text-sm">
                     <Wallet className="w-4 h-4 text-[var(--accent-blue-soft)]" />
                     <span>{formatCurrency(trip.budget)}</span>
                   </div>
                 </div>
 
                 {/* Stats */}
-                <div className="flex gap-4 mb-4 pb-4 border-b border-[var(--glass-border)] text-sm">
+                <div className="flex gap-6 mb-5 pb-5 border-b border-[var(--glass-border)] text-sm">
                   <div>
                     <span className="text-[var(--text-secondary)]">Views: </span>
                     <span className="font-semibold">1.2k</span>
@@ -99,10 +99,10 @@ export default function CommunityPage() {
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <Button
                     variant="primary"
-                    size="sm"
+                    size="md"
                     className="flex-1"
                     onClick={() => handleViewTrip(trip.id)}
                   >
@@ -111,7 +111,7 @@ export default function CommunityPage() {
                   </Button>
                   <Button
                     variant="outline"
-                    size="sm"
+                    size="md"
                     className="flex-1"
                     onClick={(e) => handleCopyTrip(e, trip.name)}
                   >

@@ -74,14 +74,21 @@ export const useStore = create<AppState>((set) => ({
     activeTrip: state.activeTrip?.id === id ? null : state.activeTrip,
   })),
   
-  // Theme state
-  theme: 'dark',
+  // Theme state with localStorage
+  theme: (typeof window !== 'undefined' ? localStorage.getItem('globe-trotter-theme') as 'dark' | 'light' : null) || 'dark',
   
-  toggleTheme: () => set((state) => ({
-    theme: state.theme === 'dark' ? 'light' : 'dark',
-  })),
+  toggleTheme: () => set((state) => {
+    const newTheme = state.theme === 'dark' ? 'light' : 'dark';
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('globe-trotter-theme', newTheme);
+    }
+    return { theme: newTheme };
+  }),
   
   // Search state
   searchQuery: '',
   setSearchQuery: (query) => set({ searchQuery: query }),
 }));
+
+// Helper hooks for specific state slices
+export const useTheme = () => useStore((state) => ({ theme: state.theme, toggleTheme: state.toggleTheme }));

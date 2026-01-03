@@ -5,7 +5,7 @@
 
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import TopBar from './TopBar';
 import PageTransition from '../animations/PageTransition';
@@ -16,22 +16,42 @@ interface MainLayoutProps {
 }
 
 export default function MainLayout({ children }: MainLayoutProps) {
+  const [sidebarWidth, setSidebarWidth] = useState(280);
+
+  useEffect(() => {
+    const checkSidebarState = () => {
+      const saved = sessionStorage.getItem('sidebar-expanded');
+      setSidebarWidth(saved === 'false' ? 80 : 280);
+    };
+
+    checkSidebarState();
+    
+    // Listen for storage changes
+    const interval = setInterval(checkSidebarState, 100);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="min-h-screen relative">
-      {/* Animated Background Layer */}
+    <div className="min-h-screen flex">
+      {/* Background layer - isolated */}
       <AnimatedBackground />
       
-      {/* Content Layer */}
-      <div className="relative" style={{ zIndex: 1 }}>
-        <Sidebar />
-        <div className="ml-64">
-          <TopBar />
-          <main className="pt-20 min-h-screen">
-            <PageTransition>
+      {/* Fixed Sidebar */}
+      <Sidebar />
+      
+      {/* Main content area */}
+      <div 
+        className="flex-1 flex flex-col transition-all duration-400"
+        style={{ marginLeft: `${sidebarWidth}px` }}
+      >
+        <TopBar />
+        <main className="flex-1 overflow-y-auto">
+          <PageTransition>
+            <div className="max-w-[1600px] mx-auto px-16 py-20">
               {children}
-            </PageTransition>
-          </main>
-        </div>
+            </div>
+          </PageTransition>
+        </main>
       </div>
     </div>
   );

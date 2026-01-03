@@ -31,11 +31,11 @@ export default function SettingsPage() {
 
   return (
     <MainLayout>
-      <div className="p-8 max-w-4xl mx-auto">
-        <h1 className="section-title mb-8">Settings</h1>
+      <div className="max-w-4xl">
+        <h1 className="section-title mb-16">Settings</h1>
 
         {/* Profile Settings */}
-        <Card className="p-6 mb-6">
+        <Card className="mb-10">
           <div className="flex items-center gap-3 mb-6">
             <User className="w-6 h-6 text-[var(--accent-primary)]" />
             <h2 className="text-xl font-bold">Profile Information</h2>

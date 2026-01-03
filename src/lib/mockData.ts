@@ -16,6 +16,7 @@ export interface City {
   country: string;
   description: string;
   image: string;
+  imageUrl?: string;
   avgCost: number;
   tags: string[];
   popular: boolean;
@@ -73,7 +74,8 @@ export const mockCities: City[] = [
     name: 'Tokyo',
     country: 'Japan',
     description: 'A blend of tradition and futuristic innovation',
-    image: 'Building2',
+    image: '🏯',
+    imageUrl: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop',
     avgCost: 8500,
     tags: ['Culture', 'Food', 'Technology'],
     popular: true,
@@ -83,7 +85,8 @@ export const mockCities: City[] = [
     name: 'Paris',
     country: 'France',
     description: 'The city of lights and romance',
-    image: 'Landmark',
+    image: '🗼',
+    imageUrl: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=600&fit=crop',
     avgCost: 12000,
     tags: ['Art', 'History', 'Food'],
     popular: true,
@@ -93,7 +96,8 @@ export const mockCities: City[] = [
     name: 'Bali',
     country: 'Indonesia',
     description: 'Tropical paradise with spiritual vibes',
-    image: 'Palmtree',
+    image: '🏝️',
+    imageUrl: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&h=600&fit=crop',
     avgCost: 4000,
     tags: ['Beach', 'Nature', 'Wellness'],
     popular: true,
@@ -103,7 +107,8 @@ export const mockCities: City[] = [
     name: 'New York',
     country: 'USA',
     description: 'The city that never sleeps',
-    image: 'Building',
+    image: '🗽',
+    imageUrl: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&h=600&fit=crop',
     avgCost: 15000,
     tags: ['Urban', 'Culture', 'Shopping'],
     popular: true,
@@ -113,7 +118,8 @@ export const mockCities: City[] = [
     name: 'Barcelona',
     country: 'Spain',
     description: 'Architecture, beaches, and vibrant nightlife',
-    image: 'Waves',
+    image: '🏖️',
+    imageUrl: 'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&h=600&fit=crop',
     avgCost: 9000,
     tags: ['Architecture', 'Beach', 'Food'],
     popular: false,
@@ -122,8 +128,9 @@ export const mockCities: City[] = [
     id: 'city-6',
     name: 'Dubai',
     country: 'UAE',
-    description: 'Luxury and modern marvels',
+    description: 'Luxury and modern marvels in the heart of the desert',
     image: 'Building',
+    imageUrl: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&h=600&fit=crop',
     avgCost: 18000,
     tags: ['Luxury', 'Shopping', 'Desert'],
     popular: true,

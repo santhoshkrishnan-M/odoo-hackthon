@@ -16,21 +16,21 @@ export default function TopBar() {
   const { searchQuery, setSearchQuery } = useStore();
 
   return (
-    <header className="fixed top-0 right-0 left-64 h-20 glass-card rounded-none border-l-0 border-t-0 border-r-0 px-8 flex items-center justify-between z-30">
+    <header className="sticky top-0 h-20 glass-card border-b border-[var(--glass-border)] px-8 flex items-center justify-between z-40 bg-[var(--glass-bg)]">
       {/* Search Bar */}
       <div className="flex-1 max-w-xl relative">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--text-secondary)]" />
         <Input
           type="text"
           placeholder="Search trips, cities, activities..."
-          className="pl-12 bg-[var(--bg-elevated)]"
+          className="pl-12 bg-[var(--bg-elevated)] border-[var(--glass-border)]"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
       {/* Right Section */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         {/* Theme Toggle */}
         <ThemeToggle />
 

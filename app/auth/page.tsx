@@ -54,37 +54,37 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center p-8 relative overflow-hidden">
       {/* Animated Background */}
       <AnimatedBackground />
 
       {/* Auth Card */}
       <div
         ref={cardRef}
-        className="glass-card p-8 md:p-12 max-w-md w-full relative"
+        className="glass-card p-10 md:p-14 max-w-lg w-full relative"
         style={{ zIndex: 10 }}
       >
         {/* Logo */}
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <Plane className="w-12 h-12 text-[var(--accent-primary)]" />
-          <h1 className="text-3xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>
-            <span className="neon-text">Global</span>
+        <div className="flex items-center justify-center gap-4 mb-10">
+          <Plane className="w-14 h-14 text-[var(--accent-primary)]" />
+          <h1 className="text-4xl font-bold" style={{ fontFamily: 'var(--font-display)' }}>
+            <span className="neon-text">Globe</span>
             <span className="text-white"> Trotter</span>
           </h1>
         </div>
 
         <h2
-          className="text-2xl font-semibold mb-2 text-center"
+          className="text-3xl font-semibold mb-3 text-center"
           style={{ fontFamily: 'var(--font-display)' }}
         >
           Welcome Back
         </h2>
-        <p className="text-[var(--text-secondary)] mb-8 text-center">
+        <p className="text-lg text-[var(--text-secondary)] mb-10 text-center">
           Sign in to continue your journey
         </p>
 
         {/* Login Form */}
-        <div className="space-y-4">
+        <div className="space-y-6">
           <Input
             type="email"
             label="Email"
@@ -103,13 +103,13 @@ export default function AuthPage() {
 
           <Button
             variant="primary"
-            className="w-full"
+            className="w-full mt-8"
             onClick={handleLogin}
           >
             Sign In
           </Button>
 
-          <div className="relative my-6">
+          <div className="relative my-8">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-[var(--glass-border)]"></div>
             </div>

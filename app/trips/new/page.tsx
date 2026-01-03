@@ -48,11 +48,16 @@ export default function CreateTripPage() {
 
   return (
     <MainLayout>
-      <div className="p-8 max-w-3xl mx-auto">
-        <h1 className="section-title mb-8">Create New Trip</h1>
+      <div className="max-w-4xl mx-auto space-y-10">
+        <div className="space-y-3">
+          <h1 className="text-5xl font-bold mb-0">Create New Trip</h1>
+          <p className="text-lg text-[var(--text-secondary)]">
+            Plan your next adventure with all the details
+          </p>
+        </div>
 
-        <Card className="p-8">
-          <div className="space-y-6">
+        <Card className="p-10">
+          <div className="space-y-8">
             <div>
               <Input
                 label="Trip Name"
@@ -64,7 +69,7 @@ export default function CreateTripPage() {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Input
                 label="Start Date"
                 type="date"
@@ -93,18 +98,18 @@ export default function CreateTripPage() {
             </div>
 
             <div>
-              <label className="block text-sm text-[var(--text-secondary)] mb-2">
+              <label className="block text-sm font-medium text-[var(--text-secondary)] mb-3">
                 Description
               </label>
               <textarea
-                className="w-full px-4 py-3 bg-[var(--bg-surface)] border-2 border-[var(--glass-border)] rounded-xl text-[var(--text-primary)] outline-none transition-all duration-300 focus:border-[var(--accent-primary)] focus:shadow-[0_0_20px_rgba(199,240,0,0.2)] min-h-[120px]"
+                className="w-full px-5 py-4 bg-[var(--bg-surface)] border-2 border-[var(--glass-border)] rounded-xl text-[var(--text-primary)] outline-none transition-all duration-300 focus:border-[var(--accent-primary)] focus:shadow-[0_0_20px_rgba(199,240,0,0.2)] min-h-[150px] text-base"
                 placeholder="Describe your trip..."
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
 
-            <div className="flex gap-4 pt-4">
+            <div className="flex gap-5 pt-6">
               <Button
                 variant="primary"
                 className="flex-1"

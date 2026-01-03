@@ -95,36 +95,41 @@ export default function BudgetPage() {
 
   return (
     <MainLayout>
-      <div className="p-8">
-        <h1 className="section-title mb-8">Budget Overview</h1>
+      <div className="space-y-20">
+        <div className="space-y-4">
+          <h1 className="text-6xl font-bold mb-0">Budget Overview</h1>
+          <p className="text-xl text-[var(--text-secondary)]">
+            Track and manage your travel expenses
+          </p>
+        </div>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card>
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-12 h-12 rounded-full bg-gradient-neon flex items-center justify-center">
-                <Wallet className="w-6 h-6 text-black" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <Card className="p-10">
+            <div className="flex items-center gap-4 mb-3">
+              <div className="w-14 h-14 rounded-xl bg-gradient-neon flex items-center justify-center flex-shrink-0">
+                <Wallet className="w-7 h-7 text-black" />
               </div>
               <div>
-                <p className="text-sm text-[var(--text-secondary)]">Total Budget</p>
-                <p className="text-2xl font-bold">₹{animatedAllocated.toLocaleString()}</p>
+                <p className="text-sm text-[var(--text-secondary)] mb-1">Total Budget</p>
+                <p className="text-3xl font-bold">₹{animatedAllocated.toLocaleString()}</p>
               </div>
             </div>
           </Card>
 
-          <Card>
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-12 h-12 rounded-full bg-gradient-blue flex items-center justify-center">
-                <TrendingDown className="w-6 h-6 text-white" />
+          <Card className="p-10">
+            <div className="flex items-center gap-4 mb-3">
+              <div className="w-14 h-14 rounded-xl bg-gradient-blue flex items-center justify-center flex-shrink-0">
+                <TrendingDown className="w-7 h-7 text-white" />
               </div>
               <div>
-                <p className="text-sm text-[var(--text-secondary)]">Total Spent</p>
-                <p className="text-2xl font-bold">₹{animatedSpent.toLocaleString()}</p>
+                <p className="text-sm text-[var(--text-secondary)] mb-1">Total Spent</p>
+                <p className="text-3xl font-bold">₹{animatedSpent.toLocaleString()}</p>
               </div>
             </div>
           </Card>
 
-          <Card>
+          <Card className="p-10">
             <div className="flex items-center gap-3 mb-2">
               <div
                 className={`w-12 h-12 rounded-full flex items-center justify-center ${
@@ -138,10 +143,10 @@ export default function BudgetPage() {
                 )}
               </div>
               <div>
-                <p className="text-sm text-[var(--text-secondary)]">
+                <p className="text-sm text-[var(--text-secondary)] mb-1">
                   {remaining >= 0 ? 'Remaining' : 'Over Budget'}
                 </p>
-                <p className={`text-2xl font-bold ${remaining >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                <p className={`text-3xl font-bold ${remaining >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                   ₹{animatedRemaining.toLocaleString()}
                 </p>
               </div>
@@ -150,12 +155,12 @@ export default function BudgetPage() {
         </div>
 
         {/* Overall Progress */}
-        <Card className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold">Overall Budget Progress</h2>
+        <Card className="p-10">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold mb-0">Overall Budget Progress</h2>
             <span className="text-2xl font-bold neon-text">{percentageSpent.toFixed(1)}%</span>
           </div>
-          <div className="h-4 bg-[var(--bg-elevated)] rounded-full overflow-hidden">
+          <div className="h-5 bg-[var(--bg-elevated)] rounded-full overflow-hidden">
             <div
               className={`budget-bar h-full transition-all ${
                 percentageSpent > 100 ? 'bg-red-500' : 'bg-gradient-neon'
@@ -165,7 +170,7 @@ export default function BudgetPage() {
             />
           </div>
           {percentageSpent > 90 && (
-            <div className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-lg flex items-center gap-2">
+            <div className="mt-5 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl flex items-center gap-3">
               <AlertTriangle className="w-5 h-5 text-yellow-400" />
               <p className="text-sm text-yellow-400">
                 {percentageSpent > 100
@@ -178,25 +183,25 @@ export default function BudgetPage() {
 
         {/* Category Breakdown */}
         <div>
-          <h2 className="text-xl font-bold mb-6">Budget Breakdown by Category</h2>
-          <div className="space-y-4" ref={progressRef}>
+          <h2 className="text-2xl font-bold mb-10">Budget Breakdown by Category</h2>
+          <div className="space-y-8" ref={progressRef}>
             {mockBudgetCategories.map((category) => {
               const percentage = (category.spent / category.allocated) * 100;
               const isOverBudget = category.spent > category.allocated;
 
               return (
-                <Card key={category.name} className="category-card relative overflow-hidden">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-semibold text-lg">{category.name}</h3>
+                <Card key={category.name} className="category-card relative overflow-hidden p-8">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="font-semibold text-xl">{category.name}</h3>
                     <div className="text-right">
-                      <p className="font-bold">
+                      <p className="font-bold text-lg">
                         ₹{category.spent.toLocaleString()} / ₹{category.allocated.toLocaleString()}
                       </p>
                       <p className="text-sm text-[var(--text-secondary)]">{percentage.toFixed(1)}%</p>
                     </div>
                   </div>
 
-                  <div className="h-3 bg-[var(--bg-elevated)] rounded-full overflow-hidden relative">
+                  <div className="h-4 bg-[var(--bg-elevated)] rounded-full overflow-hidden relative">
                     <div
                       className={`budget-bar h-full ${isOverBudget ? 'bg-red-500' : ''}`}
                       data-width={`${Math.min(percentage, 100)}%`}
@@ -206,10 +211,9 @@ export default function BudgetPage() {
                       }}
                     />
                   </div>
-                  </div>
 
                   {isOverBudget && (
-                    <p className="mt-2 text-sm text-red-400 flex items-center gap-1">
+                    <p className="mt-3 text-sm text-red-400 flex items-center gap-2">
                       <AlertTriangle className="w-4 h-4" />
                       Over budget by ₹{(category.spent - category.allocated).toLocaleString()}
                     </p>
@@ -221,12 +225,12 @@ export default function BudgetPage() {
         </div>
 
         {/* Tips */}
-        <Card className="mt-8 bg-gradient-to-br from-[var(--accent-blue)]/10 to-transparent">
-          <h3 className="font-bold mb-3 flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-[var(--accent-blue)]" />
+        <Card className="p-10 bg-gradient-to-br from-[var(--accent-blue)]/10 to-transparent">
+          <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
+            <TrendingUp className="w-6 h-6 text-[var(--accent-blue)]" />
             Budget Tips
           </h3>
-          <ul className="space-y-2 text-sm text-[var(--text-secondary)]">
+          <ul className="space-y-3 text-base text-[var(--text-secondary)] leading-relaxed">
             <li>• Book flights and accommodation in advance for better deals</li>
             <li>• Consider staying in hostels or Airbnb to save on accommodation</li>
             <li>• Try local street food for authentic and budget-friendly meals</li>

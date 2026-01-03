@@ -5,69 +5,52 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { Sun, Moon } from 'lucide-react';
+import { useStore } from '@/lib/store';
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(true);
+  const { theme, toggleTheme: storeToggleTheme } = useStore();
+  const isDark = theme === 'dark';
 
   useEffect(() => {
-    // Load theme from localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setIsDark(savedTheme === 'dark');
-      applyTheme(savedTheme === 'dark');
-    }
-  }, []);
+    // Apply theme on mount
+    applyTheme(isDark);
+    // Persist to localStorage
+    localStorage.setItem('globe-trotter-theme', theme);
+  }, [isDark, theme]);
 
   const applyTheme = (dark: boolean) => {
     const root = document.documentElement;
 
     if (dark) {
-      root.style.setProperty('--bg-primary', '#121212');
-      root.style.setProperty('--bg-surface', '#1E1E1E');
-      root.style.setProperty('--bg-elevated', '#2A2A2A');
+      // Dark mode - deeper, more refined
+      root.style.setProperty('--bg-primary', '#0F0F0F');
+      root.style.setProperty('--bg-surface', '#1A1A1A');
+      root.style.setProperty('--bg-elevated', '#252525');
+      root.style.setProperty('--bg-hover', '#2F2F2F');
       root.style.setProperty('--text-primary', '#FFFFFF');
       root.style.setProperty('--text-secondary', '#A1A1AA');
-      root.style.setProperty('--text-muted', '#6B7280');
+      root.style.setProperty('--text-muted', '#71717A');
+      root.style.setProperty('--glass-bg', 'rgba(26, 26, 26, 0.6)');
+      root.style.setProperty('--glass-border', 'rgba(255, 255, 255, 0.08)');
     } else {
-      root.style.setProperty('--bg-primary', '#FFFFFF');
-      root.style.setProperty('--bg-surface', '#F5F5F5');
-      root.style.setProperty('--bg-elevated', '#E5E5E5');
-      root.style.setProperty('--text-primary', '#121212');
+      // Light mode - soft, premium, calm
+      root.style.setProperty('--bg-primary', '#F8F9FA');
+      root.style.setProperty('--bg-surface', '#FFFFFF');
+      root.style.setProperty('--bg-elevated', '#F1F3F5');
+      root.style.setProperty('--bg-hover', '#E9ECEF');
+      root.style.setProperty('--text-primary', '#1A1A1A');
       root.style.setProperty('--text-secondary', '#52525B');
-      root.style.setProperty('--text-muted', '#A1A1AA');
+      root.style.setProperty('--text-muted', '#71717A');
+      root.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.7)');
+      root.style.setProperty('--glass-border', 'rgba(0, 0, 0, 0.06)');
     }
-
-    // Animate color transition
-    gsap.to(root, {
-      duration: 0.5,
-      ease: 'power2.inOut',
-    });
   };
 
   const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    applyTheme(newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
-
-    // Animate the toggle
-    gsap.to('.theme-icon', {
-      scale: 0,
-      rotation: 180,
-      duration: 0.2,
-      ease: 'power2.in',
-      onComplete: () => {
-        gsap.to('.theme-icon', {
-          scale: 1,
-          rotation: 0,
-          duration: 0.3,
-          ease: 'back.out(1.7)',
-        });
-      },
-    });
+    storeToggleTheme();
   };
 
   return (

@@ -21,27 +21,18 @@ export default function PageTransition({ children }: PageTransitionProps) {
     const container = containerRef.current;
     if (!container) return;
 
-    const ctx = gsap.context(() => {
-      // Enhanced entrance animation
-      gsap.fromTo(
-        container,
-        {
-          opacity: 0,
-          y: 40,
-          scale: 0.98,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-        }
-      );
-    }, container);
-
-    return () => ctx.revert();
-  }, [pathname]); // Re-trigger on route change
+    // Simple fade in only
+    gsap.fromTo(
+      container,
+      { opacity: 0, y: 10 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.4,
+        ease: 'power2.out',
+      }
+    );
+  }, [pathname]);
 
   return (
     <div ref={containerRef} className="w-full">

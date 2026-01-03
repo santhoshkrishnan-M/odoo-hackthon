@@ -13,7 +13,7 @@ import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
 import { getTripById, mockCities, getActivitiesByCity, Activity } from '@/lib/mockData';
-import { Plus, Trash2, Save, GripVertical } from 'lucide-react';
+import { Plus, Trash2, Save, GripVertical, Star } from 'lucide-react';
 
 export default function ItineraryBuilderPage() {
   const params = useParams();
@@ -265,7 +265,10 @@ export default function ItineraryBuilderPage() {
                       <div className="flex gap-3 text-xs">
                         <span className="text-[var(--accent-primary)]">{activity.category}</span>
                         <span className="text-[var(--text-secondary)]">{activity.duration}</span>
-                        <span>⭐ {activity.rating}</span>
+                        <span className="flex items-center gap-1">
+                          <Star className="w-3 h-3 text-[var(--accent-primary)] fill-current" />
+                          {activity.rating}
+                        </span>
                       </div>
                     </div>
                     <span className="font-semibold text-[var(--accent-primary)]">
