@@ -1,4 +1,4 @@
-# GlobeTrotter – Travel Planning Platform (Backend)
+# GlobeTrotter – Travel Planning Platform 
 
 GlobeTrotter is a scalable and modular FastAPI backend designed for a modern travel planning application.  
 It provides a clean REST API for managing users, trips, itineraries, budgets, and administrative insights, built with real-world production practices in mind.
